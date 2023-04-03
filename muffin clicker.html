@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<html lang="en">
+<head>
+<title>Muffin Clicker</title>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">	
+</head>
+<script>
+
+// Created by Holden Rizzo - 2023 - Present
+// Variables
+
+var muffins = 0;
+var muffinsPerSecond = 0;
+var muffinsPerClick = 1;
+
+
+var betterClickerCost = 25;
+var ovencost = 30;
+var commandPromptCost = 10000;
+
+var betterOvens = 0;
+var betterClickers = 0;
+
+let clickerImage = document.getElementById("muffinclickerimg")
+
+// ALERT!! YOUR PROGRESS IS NOT SAVED!!
+
+window.alert("This game is in early alpha. All content is subject to change, and you cannot save.");
+
+function increment() {
+
+	muffins += muffinsPerClick;
+	
+	document.getElementById("muffinCounter").innerText = muffins;
+
+}
+
+function CheckForNegative() {
+ 
+ if (muffins <= -1)
+ {
+ 	muffins = 0;
+ }
+ 
+}
+
+function buyOvenUpgrade() {
+
+	if (muffins >= ovencost)
+	{
+	 	muffinsPerSecond += 1;
+		muffins -= ovencost;
+		
+		document.getElementById("muffinPerSecond").innerText = muffinsPerSecond;
+		
+		CheckForNegative();
+	}
+
+}
+
+function buyCommandUpgrade() {
+
+	if (muffins >= commandPromptCost)
+	{
+	 	muffinsPerSecond += 250;
+		muffins -= commandPromptCost;
+		
+		document.getElementById("muffinPerSecond").innerText = muffinsPerSecond;
+		
+		CheckForNegative();
+	}
+
+}
+
+
+function buyHandsUpgrade() {
+ 
+ 	if (muffins >= 25)
+	{
+		muffinsPerClick += 1;
+		muffins -= 25;
+		
+		betterHands++
+	}
+ 
+}
+
+
+setInterval(function() {
+
+	muffins += muffinsPerSecond;
+	document.getElementById("muffinCounter").innerText = muffins;
+
+}, 1000)
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 219) {
+        alert('dev was pressed');
+    }
+    else if(event.keyCode == 39) {
+        alert('Right was pressed');
+    }
+});
+
+</script>
+<style>
+
+body {
+ background-color: #668cff;
+ font-family: Courier New;
+ font-size: 35px;
+}
+
+.muffinCounter {
+ text-align: center;
+ position: sticky;
+}
+
+.clickButton1 {
+ cursor: pointer;
+ text-align: center;
+ background-color: red;
+}
+
+.clickButton1:active {
+	box-shadow: 0 4px 8px 0 #666666;
+	-ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1); 
+  transform: scale(1.1); 
+}
+
+
+.muffinimg {
+ font-family: Arial;
+}
+
+.muffinimg:active {
+	-ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1); 
+  transform: scale(1.1); 
+}
+
+.heading {
+ color: black;
+ font-family: Courier New;
+ text-align: center;
+ font-size: 30px;
+ padding: 27px;
+ background-color: darkgray;
+}
+
+.OvenRight {
+ position: absolute;
+ top: 125px;
+ right: 0px;
+}
+
+.CursorRight {
+ position: relative;
+ top: -220px;
+ right: -1390px;
+}
+
+.CmdRight {
+ position: absolute;
+ top: 480px;
+ right: 12px;
+}
+
+h3 {
+ color: black;
+ font-size: 27px;
+}
+
+
+
+</style>
+<body>
+
+<h1 class="heading">Muffin Clicker</h1>
+
+<left>
+
+<p id="muffinCounter"><span id="showMuffins">0</p>
+<p>Muffins Per Second: <span id="muffinPerSecond">0</p>
+<br/>
+<img id="muffinclickerimg" class="muffinimg" src="muffinnew.png" height="250" width="250" onclick="increment()"</img>
+<br/>
+</left>
+
+<right>
+
+<img src="newovenv3.png" class="OvenRight" height="250" width="250" onclick="buyOvenUpgrade()"</img>
+<img src="bettercursor3.png" class="CursorRight" height="100" width="200" onclick="buyHandsUpgrade()"</img>
+<img src="cmdprompt.png" class="CmdRight" height="200" width="200" onclick="buyCommandUpgrade"</img>
+
+</right>
+<center>
+
+<h3>4/3/2023: Changed some fonts and added a new upgrade and Alpha is coming soon!</h3>
+
+</center>
+
+</body>
+</html>
